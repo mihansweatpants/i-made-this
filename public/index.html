@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>zalupa</title>
+    <style>
+      body {
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      video {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%; 
+        min-height: 100%;
+        z-index: -1;
+      }
+
+      img {
+        margin-top: 100px;
+        width: 100%;
+        height: auto;
+      }
+
+      h1 {
+        font-size: 100px;
+        margin: 0;
+        color: rgb(255, 144, 181);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <h1>Dolboyeb goda🎉</h1>
+      <img src="./cool-glasses.png" alt="">
+      <video autoplay="true" id="videoElement"></video>
+    </div>
+    <script>
+      const videoEl = document.getElementById('videoElement');
+      navigator.mediaDevices
+        .getUserMedia({ video: true })
+        .then(stream => videoEl.srcObject = stream);
+    </script>
+  </body>
+</html>
