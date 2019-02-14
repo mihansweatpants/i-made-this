@@ -11,40 +11,48 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        overflow: hidden;
+        min-height: 100vh;
       }
 
       video {
         position: fixed;
         right: 0;
         bottom: 0;
-        min-width: 100%; 
+        min-width: 100%;
         min-height: 100%;
         z-index: -1;
       }
 
       img {
-        width: 100%;
         height: auto;
+        width: 30%;
+        margin-bottom: 200px;
+      }
+
+      @media only screen and (max-width: 600px) {
+        img {
+          width: 80%;
+        }
       }
 
       h1 {
-        font-size: 100px;
+        font-size: 10vw;
         margin: 0;
         color: rgb(255, 144, 181);
       }
     </style>
   </head>
   <body>
-    <div id="container">
-      <h1>Dolboyeb goda🎉</h1>
-      <img src="./cool-glasses.png" alt="">
-      <video autoplay="true" id="videoElement"></video>
-    </div>
+    <!-- <h1>Dolboyeb goda🎉</h1> -->
+    <img src="./cool-glasses.png" alt="" />
+    <video autoplay playsinline id="videoElement"></video>
     <script>
       const videoEl = document.getElementById('videoElement');
       navigator.mediaDevices
-        .getUserMedia({ video: true })
-        .then(stream => videoEl.srcObject = stream);
+        .getUserMedia({ video: true, audio: false, facingMode: 'user' })
+        .then(stream => (videoEl.srcObject = stream))
+        .catch(error => console.error(error));
     </script>
   </body>
 </html>
